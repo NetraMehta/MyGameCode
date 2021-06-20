@@ -84,6 +84,9 @@ function draw(){
 
   if(gameState === 2){
     game.end();
+    player.getRanks();
+    clear();
+    game.displayRanks();
   }
 }
 
