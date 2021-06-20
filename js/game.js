@@ -139,4 +139,21 @@ class Game {
         }
       }
     }
+
+    displayRanks(){
+      camera.position.x = 0;
+      camera.position.y = 0;
+
+      Player.getPlayerInfo();
+
+      for(var plr in allPlayers){
+        if(allPlayers[plr].rank === 1){
+          text("Winner: " + allPlayers[plr].name, 0, 85);
+        }
+  
+        else if(allPlayers[plr].rank === 2){
+          text("Loser " + allPlayers[plr].name, 0, 200);
+        }
+      }
+    }
 }
