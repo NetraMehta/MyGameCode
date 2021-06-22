@@ -10,12 +10,10 @@ var form, player, game;
 var blueDuck;
 var redDuck;
 var ducks;
-
 var blueDuckImg;
 var redDuckImg;
 
 var grass;
-
 var burrowImg;
 
 var timer;
@@ -25,16 +23,13 @@ var interval;
 
 var redWorm;
 var blueWorm;
-
 var rGrp;
 var bGrp;
-
 var rWorm;
 var bWorm;
 
 var p1;
 var p2;
-
 var p1rank;
 var p2rank;
 
@@ -82,11 +77,13 @@ function draw(){
     text(timer, 100, 100);
   }
 
-  if(gameState === 2){
-    game.end();
-    player.getRanks();
+timer = convertSeconds(timeLeft - counter);
+  if(counter === timeLeft){
+    clearInterval(interval);
+    gameState = 2;
+    game.update(2);
     clear();
-    game.displayRanks();
+    game.setRanks();
   }
 }
 
@@ -99,14 +96,5 @@ function convertSeconds(s){
 function timeIt(){
   if(gameState === 1){
     counter++;
-    countdown();
-  }
-}
-
-function countdown(){
-  timer = convertSeconds(timeLeft - counter);
-  if(counter === timeLeft){
-    clearInterval(interval);
-    game.update(2);
   }
 }

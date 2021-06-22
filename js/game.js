@@ -8,7 +8,6 @@ class Game {
       gameStateRef.on("value",function(data){
          gameState = data.val();
       })
-  
     }
   
     update(state){
@@ -140,20 +139,19 @@ class Game {
       }
     }
 
-    displayRanks(){
+    setRanks(){
       camera.position.x = 0;
       camera.position.y = 0;
 
       Player.getPlayerInfo();
 
-      for(var plr in allPlayers){
-        if(allPlayers[plr].rank === 1){
-          text("Winner: " + allPlayers[plr].name, 0, 85);
-        }
-  
-        else if(allPlayers[plr].rank === 2){
-          text("Loser " + allPlayers[plr].name, 0, 200);
-        }
+      if(allPlayers.player1.score > allPlayers.player2.score){
+        text("Winner: " + allPlayers.player1.name, -10, 40);
+        text("Loser: " + allPlayers.player2.name, -10, 80);
+      }
+      else if(allPlayers.player1.score < allPlayers.player2.score){
+        text("Winner: " + allPlayers.player2.name, 0, 85);
+        text("Loser: " + allPlayers.player1.name, 0, 2000);
       }
     }
 }
